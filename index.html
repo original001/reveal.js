@@ -24,8 +24,35 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-background="#fff">
+					<img data-src="./styled-components.png" alt="">
+				</section>
+				<section>
+					<h2>Проблемы CSS в SPA</h2>
+					<ul>
+						<li class="fragment">Глобальные переменные</li>
+						<li class="fragment">Зависимости</li>
+						<li class="fragment">Удаление неиспользуемого кода</li>
+						<li class="fragment">Общие переменные</li>
+						<li class="fragment">Недетерминированное разрешение правил</li>
+						<li class="fragment">Изоляция</li>
+					</ul>
+				</section>
+				<section>
+					<h2>CSS Modules</h2>
+					<ul>
+						<li class="fragment">Локальная область видимости для файла</li>
+						<li class="fragment">Подключение стилей модулями</li>
+						<li class="fragment">В сборке только подключенные стили</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Оставшиеся проблемы</h2>
+					<ul>
+						<li>Общие переменные</li>
+						<li>Недетерминированное разрешение правил</li>
+					</ul>
+				</section>
 			</div>
 		</div>
 
