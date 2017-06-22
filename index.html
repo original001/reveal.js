@@ -29,24 +29,6 @@
 					<h3>< 💅 > Styled Components</h3>
 				</section>
 				<section>
-					<h2>Проблемы CSS</h2>
-					<ul>
-						<li class="fragment">Изоляция</li>
-						<li class="fragment">Настройка зависимостей</li>
-						<li class="fragment">Неиспользуемый код</li>
-						<li class="fragment">Использование общих с JS переменных</li>
-						<li class="fragment">Недетерминированное разрешение правил</li>
-					</ul>
-				</section>
-				<section>
-					<h2>CSS Modules</h2>
-					<ul>
-						<li class="fragment">Локальная область видимости для файла</li>
-						<li class="fragment">Подключение стилей модулями</li>
-						<li class="fragment">В сборке только подключенные стили</li>
-					</ul>
-				</section>
-				<section>
 					<h2>
 						CSS in JS
 					</h2>
@@ -56,6 +38,7 @@
 						<li class="fragment">Програмирование стилей на JS</li>
 						<li class="fragment">Явная связь между стилем и узлом</li>
 						<li class="fragment">Управление загрузкой стилей</li>
+						<li class="fragment">Не требует сборки</li>
 					</ul>
 				</section>
 				<section>
@@ -91,6 +74,7 @@
 						<li>Использование компонентов для стилизации</li>
 					</ul>
 				</section>
+				<section> Применяй лучшие практики </section>
 				<section>
 					<img data-src="./img/api_example.png" alt="">
 				</section>
@@ -191,6 +175,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				transition: 'none',
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
