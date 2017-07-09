@@ -43,7 +43,6 @@
         <!-- <section>
           <h3>CSS in JS</h3>
         </section> -->
-
         <section>
           <h1>CSS in JS</h1>
           <!-- <h3>< 💅 > Styled Components</h3> -->
@@ -120,7 +119,7 @@
           <div class="flex">
             <div class="flexleft">
               <h4>css in js</h4>
-              <div>передаем по сети только алгоритмы</div>
+              <div>передаем по сети только логику</div>
             </div>
             <div class="flexright">
               <h4>not css in js</h4>
@@ -188,6 +187,128 @@
         <section>
           <h3>CSS in JS</h3>
           <div>Не требуется сборка</div>
+        </section>
+        <section>
+          <h3>Проблемы специфичности</h3>
+        </section>
+        <section>
+          <div class="flex">
+            <div class="flexleft">
+              <pre><code data-trim>
+                // LESS
+                .common-arrow {
+                  background: white;
+                }
+
+                .arrow {
+                  &:extend(.common-arrow)
+                  background: gray;
+                }
+              </code></pre>
+            </div>
+            <div class="flexright">
+              <pre><code data-trim>
+                // CSS
+                .common-arrow, .arrow {
+                  background: white;
+                }
+
+                .arrow {
+                  background: gray;
+                }
+              </code></pre>
+            </div>
+          </div>
+        </section>
+        <section>
+          <pre><code data-trim>
+            // LESS
+            .arrow {
+              &:extend(.common-arrow)
+              background: gray;
+            }
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim>
+            // CSS
+            .arrow {
+              background: gray;
+            }
+
+            .common-arrow, .arrow {
+              background: white;
+            }
+          </code></pre>
+        </section>
+        <section>
+          <div class="flex">
+            <div class="flexleft">
+              <h3>без CSS in JS</h3>
+              <pre><code data-trim>
+                .arrow {
+                  .common-arrow();
+                  background: gray;
+                }
+              </code></pre>
+            </div>
+            <div class="flexright">
+              <h3>CSS in JS</h3>
+              <pre><code data-trim>
+                const Arrow = ComArrow.extend`
+                  background: white;
+                `
+
+                const Arrow = styled.div`
+                  ${commonStyles}
+                  background: white;
+                `
+              </code></pre>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Сложность рантайм стилизации</h3>
+        </section>
+        <section>
+          <h4>Инлайн стили не позволяют использовать</h3>
+          <ul>
+            <li>Псевдоселекторы и псевдоэлементы</li>
+            <li>Наследование</li>
+            <li>@media</li>
+            <li>@font-face</li>
+            <li>@keyframes</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>без CSS in JS</h3>
+          <div>Radium</div>
+          <pre><code data-trim>
+            var styles = {
+              base: {
+                color: 'white',
+
+                ':hover': {
+                  background: 'gray'
+                }
+              },
+          </code></pre>
+        </section>
+        <section>
+          <h3>CSS in JS</h3>
+          <pre><code data-trim>
+            const Arrow = styled.div`
+              background: white;
+              > div {
+                display: none;
+              }
+              @media (max-width: 700px) {
+                background: gray;
+              }
+              ...
+            `
+          </code></pre>
         </section>
         <!-- <section>
           <div class="flex">
