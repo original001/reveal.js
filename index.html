@@ -37,6 +37,13 @@
         <!-- <section data-background="#fff">
           <img data-src="./img/styled-components.png" alt="">
         </section> -->
+        <!-- <section>
+          <h3>без CSS in JS</h3>
+        </section> -->
+        <!-- <section>
+          <h3>CSS in JS</h3>
+        </section> -->
+
         <section>
           <h1>CSS in JS</h1>
           <!-- <h3>< 💅 > Styled Components</h3> -->
@@ -78,19 +85,6 @@
           </code></pre>
         </section>
         <section>
-          <h3>CSS in JS</h3>
-          <pre><code data-trim >
-            const opposite = (side) => ...
-            const Arrow = styled.div`
-              // base styles
-              ${(props) => props.tooltipPos}: 100%;
-              ${(props) => props.caretPos}: 30px;
-              border-${(props) => props.tooltipPos}-color: #fff;
-              border-${(props) => opposite(props.tooltipPos)}-width: 0;
-            `
-          </code></pre>
-        </section>
-        <section>
           <h3>без CSS in JS</h3>
           <pre><code data-trim>
             import 'styles.css' // base styles
@@ -105,6 +99,95 @@
               [`border-${opposite(opts.tooltipPos)}-color`]: 0;
             }
           </code></pre>
+        </section>
+        <section>
+          <h3>CSS in JS</h3>
+          <pre><code data-trim >
+            const opposite = (side) => ...
+            const Arrow = styled.div`
+              // base styles
+              ${(props) => props.tooltipPos}: 100%;
+              ${(props) => props.caretPos}: 30px;
+              border-${(props) => props.tooltipPos}-color: #fff;
+              border-${(props) => opposite(props.tooltipPos)}-width: 0;
+            `
+          </code></pre>
+        </section>
+        <section>
+          <h3>Большой размер CSS</h3>
+        </section>
+        <section>
+          <div class="flex">
+            <div class="flexleft">
+              <h4>css in js</h4>
+              <div>передаем по сети только алгоритмы</div>
+            </div>
+            <div class="flexright">
+              <h4>not css in js</h4>
+              <div>использовать gzip на стороне сервера</div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Передача JS переменных</h3>
+          <pre><code data-trim>
+            @arrow-size: 10px;
+
+            .arrow {
+              // base styles
+              border-width: @arrow-size;
+            }
+
+            .top-right {
+              margin-top: -@arrow-size - 30px
+            }
+          </code></pre>
+        </section>
+        <section>
+          <h3>без CSS in JS</h3>
+          <pre><code data-trim>
+            import 'styles.css' // base styles
+
+            const opts = ... // get options from somewhere
+
+            const styles = {
+              borderWidth: opts.arrowSize,
+              marginTop: -opts.arrowSize - 30,
+            }
+          </code></pre>
+        </section>
+        <section>
+          <h3>CSS in JS</h3>
+          <pre><code data-trim>
+            const Arrow = styled.div`
+              border-width: ${(props) => props.arrowSize}px;
+              margin-top: ${(props) => -props.arrowSize - 30}px;
+            `
+          </code></pre>
+        </section>
+        <section>
+          <h3>Ненадежная связь между селектором и элементом</h3>
+        </section>
+        <section>
+          <h3>без CSS in JS</h3>
+          <div>Генерация статических типов из стилей
+            + использование статической типизации</div>
+        </section>
+        <section>
+          <h3>CSS in JS</h3>
+          <div>Связь между стилями и элементом становится как при
+            использовании переменной</div>
+        </section>
+        <section>
+          <h3>Лишний файл в библиотеках</h3>
+        </section>
+        <section>
+          <h3>без CSS in JS</h3>
+          <div>Настройка webpack или инлайн стили</div>
+        </section>
+        <section>
+          <h3>CSS in JS</h3>
+          <div>Не требуется сборка</div>
         </section>
         <!-- <section>
           <div class="flex">
