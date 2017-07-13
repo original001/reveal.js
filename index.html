@@ -139,21 +139,6 @@
           </code></pre>
         </section>
         <section>
-          <h3>Большой размер CSS</h3>
-        </section>
-        <section>
-          <h3>без css in js</h3>
-          <div>использовать gzip на стороне сервера</div>
-        </section>
-        <section>
-          <h3>css in js</h3>
-          <ul>
-            <li>Передаем по сети только логику</li>
-            <li>Tree shaking для модулей</li>
-            <li>Подсказки редактора о неиспользуемых стилях</li>
-          </ul>
-        </section>
-        <section>
           <h3>Передача JS переменных</h3>
           <pre><code data-trim>
             @arrow-size: 10px;
@@ -191,28 +176,47 @@
           </code></pre>
         </section>
         <section>
-          <h3>Ненадежная связь между селектором и элементом</h3>
+          <h3>Сложность рантайм стилизации</h3>
         </section>
         <section>
+          <h4>Инлайн стили не позволяют использовать</h3>
+          <ul>
+            <li>Псевдоселекторы и псевдоэлементы</li>
+            <li>Наследование</li>
+            <li>@media</li>
+            <li>@font-face</li>
+            <li>@keyframes</li>
+          </ul>
+        </section>
+
+        <section>
           <h3>без CSS in JS</h3>
-          <div>Генерация статических типов из стилей
-            + использование статической типизации</div>
+          <div>Radium</div>
+          <pre><code data-trim>
+            var styles = {
+              base: {
+                color: 'white',
+
+                ':hover': {
+                  background: 'gray'
+                }
+              },
+          </code></pre>
         </section>
         <section>
           <h3>CSS in JS</h3>
-          <div>Связь между стилями и элементом становится как при
-            использовании переменной</div>
-        </section>
-        <section>
-          <h3>Лишний файл в библиотеках</h3>
-        </section>
-        <section>
-          <h3>без CSS in JS</h3>
-          <div>Настройка webpack или инлайн стили</div>
-        </section>
-        <section>
-          <h3>CSS in JS</h3>
-          <div>Не требуется сборка</div>
+          <pre><code data-trim>
+            const Arrow = styled.div`
+              background: white;
+              > div {
+                display: none;
+              }
+              @media (max-width: 700px) {
+                background: gray;
+              }
+              ...
+            `
+          </code></pre>
         </section>
         <section>
           <h3>Проблемы специфичности</h3>
@@ -294,47 +298,43 @@
           </div>
         </section>
         <section>
-          <h3>Сложность рантайм стилизации</h3>
+          <h3>Ненадежная связь между селектором и элементом</h3>
         </section>
-        <section>
-          <h4>Инлайн стили не позволяют использовать</h3>
-          <ul>
-            <li>Псевдоселекторы и псевдоэлементы</li>
-            <li>Наследование</li>
-            <li>@media</li>
-            <li>@font-face</li>
-            <li>@keyframes</li>
-          </ul>
-        </section>
-
         <section>
           <h3>без CSS in JS</h3>
-          <div>Radium</div>
-          <pre><code data-trim>
-            var styles = {
-              base: {
-                color: 'white',
-
-                ':hover': {
-                  background: 'gray'
-                }
-              },
-          </code></pre>
+          <div>Генерация статических типов из стилей
+            + использование статической типизации</div>
         </section>
         <section>
           <h3>CSS in JS</h3>
-          <pre><code data-trim>
-            const Arrow = styled.div`
-              background: white;
-              > div {
-                display: none;
-              }
-              @media (max-width: 700px) {
-                background: gray;
-              }
-              ...
-            `
-          </code></pre>
+          <div>Связь между стилями и элементом становится как при
+            использовании переменной</div>
+        </section>
+        <section>
+          <h3>Лишний файл в библиотеках</h3>
+        </section>
+        <section>
+          <h3>без CSS in JS</h3>
+          <div>Настройка webpack или инлайн стили</div>
+        </section>
+        <section>
+          <h3>CSS in JS</h3>
+          <div>Не требуется сборка</div>
+        </section>
+        <section>
+          <h3>Большой размер CSS</h3>
+        </section>
+        <section>
+          <h3>без css in js</h3>
+          <div>использовать gzip на стороне сервера</div>
+        </section>
+        <section>
+          <h3>css in js</h3>
+          <ul>
+            <li>Передаем по сети только логику</li>
+            <li>Tree shaking для модулей</li>
+            <li>Подсказки редактора о неиспользуемых стилях</li>
+          </ul>
         </section>
         <section>
           <h3>Кому он нужен</h3>
