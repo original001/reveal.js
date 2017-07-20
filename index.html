@@ -101,6 +101,47 @@
             }
 
             .bottom-left {
+              bottom: 100%;
+              left: 30px;
+              border-bottom-color: #fff;
+              border-top-width: 0;
+            }
+
+            // all positions
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim>
+            // LESS
+
+            .arrow {
+              // base styles
+            }
+
+            .bottom-left {
+              .tooltip-pos(bottom, left);
+            }
+
+            // all positions
+
+            .tooltip-pos(@tooltipPos, @caretPos) {
+              .arrow {
+                @{tooltipPos}: 100%;
+                @{caretPos}: 30px;
+                border-@{tooltipPos}-color: #fff;
+              }
+            }
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim>
+            // LESS
+
+            .arrow {
+              // base styles
+            }
+
+            .bottom-left {
               .tooltip-pos(bottom, left, top);
             }
 
