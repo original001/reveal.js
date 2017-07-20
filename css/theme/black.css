@@ -11,8 +11,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #1d1f21;
-  background-color: #1d1f21; }
+  background: #222;
+  background-color: #222; }
 
 .reveal {
   font-family: Helvetica, sans-serif;
@@ -157,7 +157,7 @@ body {
 }
 
 .reveal code {
-  background: #1d1f21;
+  background: #222;
   font-family: monospace; }
 
 .reveal pre code {
