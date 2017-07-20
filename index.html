@@ -51,12 +51,12 @@
           <h2>Проблемы CSS</h2>
           <ul>
             <li>Ограничения языка</li>
-            <li>Большой размер собранного CSS</li>
             <li>Тяжело распространять переменные между CSS и JS</li>
-            <li>Ненадежная связь между селектором и элементом</li>
             <li>Сложности рантайм стилизации</li>
-            <li>Лишний файл в библиотеках</li>
             <li>Проблемы специфичности</li>
+            <li>Ненадежная связь между селектором и элементом</li>
+            <li>Лишний файл в библиотеках</li>
+            <li>Большой размер собранного CSS</li>
           </ul>
         </section>
         <section>
@@ -94,6 +94,8 @@
         </section>
         <section>
           <pre><code data-trim>
+            // LESS
+
             .arrow {
               // base styles
             }
@@ -169,6 +171,22 @@
               borderWidth: opts.arrowSize,
               marginTop: -opts.arrowSize - 30,
             }
+          </code></pre>
+        </section>
+        <section>
+          <h4>CSS Variables</h4>
+          <pre><code data-trim>
+            // CSS
+
+            .my-element {
+              height: var(--element-height);
+              width: 40px;
+              color: #9b806b;
+            }
+
+            // JS
+
+            myElement.style.setProperty('--element-height', height)
           </code></pre>
         </section>
         <section>
@@ -307,8 +325,12 @@
         </section>
         <section>
           <h3>без CSS in JS</h3>
-          <div>Генерация статических типов из стилей
-            + использование статической типизации</div>
+          <ul>
+            <li>Генерация статических типов из стилей
+            + использование статической типизации</li>
+            <li>Подсказки последнего Webstorm IDE</li>
+            <li>react-css-modules</li>
+          </ul>
         </section>
         <section>
           <h3>CSS in JS</h3>
