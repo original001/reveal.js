@@ -34,458 +34,76 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <!-- <section data-background="#fff">
-          <img data-src="./img/styled-components.png" alt="">
-        </section> -->
-        <!-- <section>
-          <h3>без CSS in JS</h3>
-        </section> -->
-        <!-- <section>
-          <h3>CSS in JS</h3>
-        </section> -->
         <section>
-          <h1>CSS in JS</h1>
-          <!-- <h3>< 💅 > Styled Components</h3> -->
+          <h2>Keweb</h2>
         </section>
         <section>
-          <h2>Проблемы CSS</h2>
+          <h2>Что такое Кевеб</h2>
           <ul>
-            <li>Ограничения языка</li>
-            <li>Тяжело распространять переменные между CSS и JS</li>
-            <li>Сложности рантайм стилизации</li>
-            <li>Проблемы специфичности</li>
-            <li>Ненадежная связь между селектором и элементом</li>
-            <li>Лишний файл в библиотеках</li>
-            <li>Большой размер собранного CSS</li>
+            <li>Keweb – часть экстерна</li>
+            <li>Экстерн занимается отправкой документов в контролирующие органы,
+              а Кевеб – веб интерфейсом Экстерна
+            </li>
           </ul>
         </section>
         <section>
-          <img data-src="./img/api_example.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_1.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_2.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_3.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_4.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_render.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_props.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_props_2.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_nesting.png" alt="">
-        </section>
-        <section>
-          <h3>Ограничения языка</h3>
-        </section>
-        <section data-background="#333">
-          <img src="./img/screen_tip_black.png" alt="">
-        </section>
-        <section>
-          <pre><code data-trim>
-            // LESS
-
-            .arrow {
-              // base styles
-            }
-
-            .bottom-left {
-              bottom: 100%;
-              left: 30px;
-              border-bottom-color: #fff;
-              border-top-width: 0;
-            }
-
-            // all positions
-          </code></pre>
-        </section>
-        <section>
-          <pre><code data-trim>
-            // LESS
-
-            .arrow {
-              // base styles
-            }
-
-            .bottom-left {
-              .tooltip-pos(bottom, left);
-            }
-
-            // all positions
-
-            .tooltip-pos(@tooltipPos, @caretPos) {
-              .arrow {
-                @{tooltipPos}: 100%;
-                @{caretPos}: 30px;
-                border-@{tooltipPos}-color: #fff;
-              }
-            }
-          </code></pre>
-        </section>
-        <section>
-          <pre><code data-trim>
-            // LESS
-
-            .arrow {
-              // base styles
-            }
-
-            .bottom-left {
-              .tooltip-pos(bottom, left, top);
-            }
-
-            // all positions
-
-            .tooltip-pos(@tooltipPos, @caretPos, @tooltipPosOpposite) {
-              .arrow {
-                @{tooltipPos}: 100%;
-                @{caretPos}: 30px;
-                border-@{tooltipPos}-color: #fff;
-                border-@{tooltipPosOpposite}-width: 0;
-              }
-            }
-          </code></pre>
-        </section>
-        <section>
-          <h3>без CSS in JS</h3>
-          <pre><code data-trim>
-            import 'styles.css' // base styles
-
-            const opts = ... // get options from somewhere
-
-            const opposite = (side) => ...
-            const styles = {
-              [opts.tooltipPos]: '100%',
-              [opts.caretPos]: '30px',
-              [`border-${opts.tooltipPos}-color`]: '#fff';
-              [`border-${opposite(opts.tooltipPos)}-color`]: 0;
-            }
-          </code></pre>
-        </section>
-        <section>
-          <h3>CSS in JS</h3>
-          <pre><code data-trim >
-            const opposite = (side) => ...
-            const Arrow = styled.div`
-              // base styles
-              ${(props) => props.tooltipPos}: 100%;
-              ${(props) => props.caretPos}: 30px;
-              border-${(props) => props.tooltipPos}-color: #fff;
-              border-${(props) => opposite(props.tooltipPos)}-width: 0;
-            `
-          </code></pre>
-        </section>
-        <section>
-          <h3>Передача JS переменных</h3>
-        </section>
-        <section>
-          <pre><code data-trim>
-            @arrow-size: 10px;
-
-            .arrow {
-              // base styles
-              border-width: @arrow-size;
-            }
-
-            .top-right {
-              margin-top: -@arrow-size - 30px
-            }
-          </code></pre>
-        </section>
-        <section>
-          <h3>без CSS in JS</h3>
-          <pre><code data-trim>
-            import 'styles.css' // base styles
-
-            const opts = ... // get options from somewhere
-              borderWidth: opts.arrowSize,
-              marginTop: -opts.arrowSize - 30,
-            }
-          </code></pre>
-        </section>
-        <section>
-          <h4>CSS Variables</h4>
-          <pre><code data-trim>
-            // CSS
-
-            .my-element {
-              height: var(--element-height);
-              width: 40px;
-              color: #9b806b;
-            }
-
-            // JS
-
-            myElement.style.setProperty('--element-height', height)
-          </code></pre>
-        </section>
-        <section>
-          <h3>CSS in JS</h3>
-          <pre><code data-trim>
-            const Arrow = styled.div`
-              // base styles
-              border-width: ${(props) => props.arrowSize}px;
-              margin-top: ${(props) => -props.arrowSize - 30}px;
-            `
-          </code></pre>
-        </section>
-        <section>
-          <h3>Сложность рантайм стилизации</h3>
-        </section>
-        <section>
-          <h4>Инлайн стили не позволяют использовать</h3>
+          <h2>Задачи на Клиенте</h2>
           <ul>
-            <li>Псевдоселекторы и псевдоэлементы</li>
-            <li>Наследование</li>
-            <li>@media</li>
-            <li>@font-face</li>
-            <li>@keyframes</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>без CSS in JS</h3>
-          <div>Radium</div>
-          <pre><code data-trim>
-            var styles = {
-              base: {
-                color: 'white',
-
-                ':hover': {
-                  background: 'gray'
-                }
-              },
-          </code></pre>
-        </section>
-        <section>
-          <h3>CSS in JS</h3>
-          <pre><code data-trim>
-            const Arrow = styled.div`
-              background: white;
-              > div {
-                display: none;
-              }
-              @media (max-width: 700px) {
-                background: gray;
-              }
-              ...
-            `
-          </code></pre>
-        </section>
-        <section>
-          <h3>Проблемы специфичности</h3>
-        </section>
-        <section>
-          <div class="flex">
-            <div class="flexleft">
-              <pre><code data-trim>
-                // LESS
-                .common-arrow {
-                  background: white;
-                }
-
-                .arrow {
-                  &:extend(.common-arrow)
-                  background: gray;
-                }
-              </code></pre>
-            </div>
-            <div class="flexright">
-              <pre><code data-trim>
-                // CSS
-                .common-arrow, .arrow {
-                  background: white;
-                }
-
-                .arrow {
-                  background: gray;
-                }
-              </code></pre>
-            </div>
-          </div>
-        </section>
-        <section>
-          <pre><code data-trim>
-            // LESS
-            .arrow {
-              &:extend(.common-arrow)
-              background: gray;
-            }
-          </code></pre>
-        </section>
-        <section>
-          <pre><code data-trim>
-            // CSS
-            .arrow {
-              background: gray;
-            }
-
-            .common-arrow, .arrow {
-              background: white;
-            }
-          </code></pre>
-        </section>
-        <section>
-          <div class="flex">
-            <div class="flexleft">
-              <h3>без CSS in JS</h3>
-              <pre><code data-trim>
-                .arrow {
-                  .common-arrow();
-                  background: gray;
-                }
-              </code></pre>
-            </div>
-            <div class="flexright">
-              <h3>CSS in JS</h3>
-              <pre><code data-trim>
-                const Arrow = ComArrow.extend`
-                  background: white;
-                `
-
-                const Arrow = styled.div`
-                  ${commonStyles}
-                  background: white;
-                `
-              </code></pre>
-            </div>
-          </div>
-        </section>
-        <section>
-          <h3>Ненадежная связь между селектором и элементом</h3>
-        </section>
-        <section>
-          <h3>без CSS in JS</h3>
-          <ul>
-            <li>Генерация статических типов из стилей
-            + использование статической типизации</li>
-            <li>Подсказки последнего Webstorm IDE</li>
-            <li>react-css-modules</li>
+            <li>Отправка документов на клиенте</li>
+            <li>Интеграции с другими частями сервиса</li>
+            <li>Навигация по формам</li>
+            <li>Отображение статуса документооборота</li>
           </ul>
         </section>
         <section>
-          <h3>CSS in JS</h3>
-          <div>Связь между стилями и элементом становится как при
-            использовании переменной</div>
-        </section>
-        <section>
-          <h3>Лишний файл в библиотеках</h3>
-        </section>
-        <section>
-          <h3>без CSS in JS</h3>
-          <div>Настройка webpack или инлайн стили</div>
-        </section>
-        <section>
-          <h3>CSS in JS</h3>
-          <div>Не требуется сборка</div>
-        </section>
-        <section>
-          <h3>Большой размер CSS</h3>
-        </section>
-        <section>
-          <h3>без css in js</h3>
-          <div>использовать gzip на стороне сервера</div>
-        </section>
-        <section>
-          <h3>css in js</h3>
+          <h2>Разработчики</h2>
           <ul>
-            <li>Передаем по сети только логику</li>
-            <li>Tree shaking для модулей</li>
-            <li>Подсказки редактора о неиспользуемых стилях</li>
+            <li>3 фронтенд</li>
+            <li>~ 10 фулстек</li>
           </ul>
         </section>
         <section>
-          <h3>Кому он нужен</h3>
+          <h2>Технологии</h2>
+        </section>
+        <section>
+          <h3>Фреймворки</h3>
           <ul>
-            <li>Если у вас есть эти проблемы</li>
-            <li>Для библиотек с визуалом</li>
-            <li>Если у вас много инлайн стилей</li>
+            <li>BEM 1.0</li>
+            <li>BEM 2.0</li>
+            <li>JQuery</li>
+            <li>React</li>
           </ul>
         </section>
         <section>
-          <h3>Кому он не нужен</h3>
+          <h3>Библиотеки</h3>
           <ul>
-            <li>Если у вас нет этих проблем</li>
-            <li>Небольшим проектам без систем сборки</li>
+            <li>retail-ui</li>
+            <li>validation-react-ui</li>
+            <li>extern-core-js</li>
+            <li>coreui-light</li>
+            <li>coreui-models</li>
+            <li>coreui-forms</li>
           </ul>
         </section>
-
         <section>
-          <h3>Что крутого можно сделать</h3>
+          <h3>Основной стэк</h3>
+          <ul>
+            <li>React</li>
+            <li>Typescript</li>
+            <li>Redux (только начали)</li>
+            <li>React storybook</li>
+          </ul>
         </section>
         <section>
-          <h3>Темы</h3>
+          <h3>Браузеры</h3>
+          <ul>
+            <li>>= IE8</li>
+            <li>Старая Mozilla</li>
+            <li>Старый Chrome</li>
+          </ul>
         </section>
         <section>
-          <img data-src="./img/api_example_theme.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_theme_2.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_theme_3.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_theme_4.png" alt="">
-        </section>
-        <section>
-          <img data-src="./img/api_example_theme_button.png" alt="">
-        </section>
-        <section data-background="./img/auth-extern.png"></section>
-        <section data-background="./img/auth-diadoc.png"></section>
-        <section>
-          <h3>Высокоуровневые функции для генерации стилей</h3>
-        </section>
-        <section>
-          <h3>Atomic styles</h3>
-          <pre><code data-trim>
-            <style>
-              .a {
-                font-size: 14px;
-              }
-              .b {
-                color: #333;
-              }
-            </style>
-            <div>
-              <span class="a b c d e">Hello, World!</span>
-            </div>
-          </code></pre>
-        </section>
-        <section>
-          <h3>Умное префиксирование</h3>
-          <pre><code data-trim>
-            <style>
-              .box-before {
-                box-sizing: border-box;
-                user-select: none;
-                display: flex;
-              }
-
-              .box-after {
-                -webkit-user-select: none;
-                box-sizing: border-box;
-                display: -webkit-flex;
-              }
-            </style>
-          </code></pre>
-        </section>
-        <section>
-          <h3>Только для видимых</h3>
-        </section>
-        <section>
-          <h2>< 👏 ></h2>
+          <h2>Подходы</h2>
         </section>
       </div>
     </div>
